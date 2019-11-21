@@ -1,0 +1,29 @@
+[user]
+	name = Eric Chen
+	email = erchen@umich.edu
+[credential]
+	helper = cache --timeout=3600
+[diff]
+	tool = vimdiff
+	guitool = kdiff3
+[merge]
+	tool = vimdiff
+	tool = kdiff3
+[difftool]
+	prompt = false
+	prompt = true
+[mergetoo]
+	keepBackup = false
+[mergetool]
+	keepBackup = false
+[mergetool "kdiff3"]
+	path = C:/Program Files/KDiff3/kdiff3.exe
+	trustExitCode = false
+[difftool "kdiff3"]
+	path = C:/Program Files/KDiff3/kdiff3.exe
+	trustExitCode = false
+[core]
+	fscache = true
+	preloadindex = true
+[gc]
+	auto = 256
