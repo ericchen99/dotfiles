@@ -11,19 +11,12 @@ fi
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/eric/.oh-my-zsh"
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-# ZSH_THEME="robbyrussell" DEFAULT
+# Set name of the theme to load
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in $ZSH/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
-
+typeset -g POWERLEVEL9K_VIRTUALENV_SHOW_WITH_PYENV=true
+typeset -g POWERLEVEL9K_VIRTUALENV_CONTENT_EXPANSION=
+typeset -g POWERLEVEL9K_VIRTUALENV_VISUAL_IDENTIFIER_EXPANSION='venv'
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -53,7 +46,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # You can also set it to another string to have that shown instead of the default red dots.
-# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
+# COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
 # Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
 # COMPLETION_WAITING_DOTS="true"
 
@@ -87,7 +80,7 @@ plugins=(
     dirhistory
     history
     jsontools
-    zsh-autosuggestions
+    virtualenv
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -113,10 +106,6 @@ source /usr/local/share/antigen/antigen.zsh
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
 alias code='open -b com.microsoft.VSCode "$@"'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
