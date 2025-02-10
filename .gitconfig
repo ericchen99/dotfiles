@@ -1,29 +1,45 @@
 [user]
-	name = Eric Chen
-	email = erchen@umich.edu
-[credential]
-	helper = cache --timeout=3600
+	email = ericchaichen@gmail.com
+	name = ericchen99
+[alias]
+	stash-list = stash list --pretty=format:'%C(yellow)%gd%C(reset) %C(green)%cd%C(reset) %s'
+    stash-prune = "!f() { \
+        days=${1:-14}; \
+        secs_per_day=86400; \
+        seconds=$((days * secs_per_day)); \
+        now=$(date +%s); \
+        echo \"Finding stashes older than $days days...\"; \
+        old_stashes=$(git stash list | while IFS=: read -r stash message; do \
+            stash_date=$(git log -1 --format=%at \"$stash\" 2>/dev/null); \
+            if [ -n \"$stash_date\" ]; then \
+                age=$((now - stash_date)); \
+                if [ $age -gt $seconds ]; then \
+                    echo \"$stash:$message\"; \
+                fi; \
+            fi; \
+        done); \
+        if [ -z \"$old_stashes\" ]; then \
+            echo \"No stashes older than $days days found.\"; \
+            exit 0; \
+        fi; \
+        count=$(echo \"$old_stashes\" | wc -l); \
+        echo \"$old_stashes\" | while IFS=: read -r stash message; do \
+            stash_date=$(git log -1 --format=%at \"$stash\" 2>/dev/null); \
+            echo \"$(tput setaf 3)$stash$(tput sgr0) ($(tput setaf 2)$(date -r \"$stash_date\" \"+%Y-%m-%d %H:%M:%S\")$(tput sgr0)) - $(tput setaf 1)$(((now - stash_date) / secs_per_day)) days old$(tput sgr0) -$(tput setaf 6)$message$(tput sgr0)\"; \
+        done; \
+        read -p \"About to irreversibly drop $count stash(es). Continue? [y/n] \" confirm; \
+        if [ \"$confirm\" = \"y\" ] || [ \"$confirm\" = \"Y\" ]; then \
+            echo \"$old_stashes\" | cut -d: -f1 | while read -r stash; do \
+                echo \"Dropping $stash\"; \
+                git stash drop \"$stash\"; \
+            done; \
+        else \
+            echo \"Operation cancelled.\"; \
+        fi; \
+    }; f"
 [diff]
 	tool = vimdiff
 	guitool = kdiff3
 [merge]
 	tool = vimdiff
 	tool = kdiff3
-[difftool]
-	prompt = false
-	prompt = true
-[mergetoo]
-	keepBackup = false
-[mergetool]
-	keepBackup = false
-[mergetool "kdiff3"]
-	path = C:/Program Files/KDiff3/kdiff3.exe
-	trustExitCode = false
-[difftool "kdiff3"]
-	path = C:/Program Files/KDiff3/kdiff3.exe
-	trustExitCode = false
-[core]
-	fscache = true
-	preloadindex = true
-[gc]
-	auto = 256
