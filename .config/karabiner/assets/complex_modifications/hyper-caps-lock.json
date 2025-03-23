@@ -643,6 +643,26 @@
           ]
         },
         {
+          "description": "c = Cursor",
+          "type": "basic",
+          "from": {
+            "key_code": "c",
+            "modifiers": {
+              "mandatory": [
+                "right_command",
+                "right_control",
+                "right_shift",
+                "right_option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "shell_command": "open -a Cursor"
+            }
+          ]
+        },
+        {
           "description": "n = notion",
           "type": "basic",
           "from": {
@@ -927,6 +947,50 @@
               "shell_command": "open -a 'Google Chrome'"
             }
           ]
+        },
+        {
+          "description": "o = Obsidian",
+          "type": "basic",
+          "from": {
+            "key_code": "o",
+            "modifiers": {
+              "mandatory": [
+                "right_command",
+                "right_control",
+                "right_shift",
+                "right_option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "shell_command": "open -a 'Obsidian'"
+            }
+          ]
+        },
+        {
+          "description": "l = Lock Screen",
+          "type": "basic",
+          "from": {
+            "key_code": "l",
+            "modifiers": {
+              "mandatory": [
+                "right_command",
+                "right_control",
+                "right_shift",
+                "right_option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "q",
+              "modifiers": [
+                "left_control",
+                "left_command"
+              ]
+            }
+          ]
         }
       ]
     },
@@ -1193,6 +1257,10 @@
               ]
             },
             {
+              "key_code": "vk_none",
+              "hold_down_milliseconds": 100
+            },
+            {
               "shell_command": "pbpaste > ~/.clip1"
             }
           ]
@@ -1213,7 +1281,11 @@
           },
           "to": [
             {
-              "shell_command": "cat ~/.clip1 | pbcopy "
+              "shell_command": "cat ~/.clip1 | pbcopy"
+            },
+            {
+              "key_code": "vk_none",
+              "hold_down_milliseconds": 100
             },
             {
               "key_code": "v",
@@ -1246,6 +1318,10 @@
               ]
             },
             {
+              "key_code": "vk_none",
+              "hold_down_milliseconds": 100
+            },
+            {
               "shell_command": "pbpaste > ~/.clip2"
             }
           ]
@@ -1266,7 +1342,11 @@
           },
           "to": [
             {
-              "shell_command": "cat ~/.clip2 | pbcopy "
+              "shell_command": "cat ~/.clip2 | pbcopy"
+            },
+            {
+              "key_code": "vk_none",
+              "hold_down_milliseconds": 100
             },
             {
               "key_code": "v",
@@ -1299,6 +1379,10 @@
               ]
             },
             {
+              "key_code": "vk_none",
+              "hold_down_milliseconds": 100
+            },
+            {
               "shell_command": "pbpaste > ~/.clip3"
             }
           ]
@@ -1319,7 +1403,11 @@
           },
           "to": [
             {
-              "shell_command": "cat ~/.clip3 | pbcopy "
+              "shell_command": "cat ~/.clip3 | pbcopy"
+            },
+            {
+              "key_code": "vk_none",
+              "hold_down_milliseconds": 100
             },
             {
               "key_code": "v",
@@ -1353,7 +1441,133 @@
               ]
             },
             {
+              "key_code": "vk_none",
+              "hold_down_milliseconds": 100
+            },
+            {
               "shell_command": "pbpaste > ~/.clip4"
+            }
+          ]
+        },
+        {
+          "description": "command + 5 = copy to clip5",
+          "type": "basic",
+          "from": {
+            "key_code": "5",
+            "modifiers": {
+              "mandatory": [
+                "left_command",
+                "right_command",
+                "right_control",
+                "right_shift",
+                "right_option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "c",
+              "modifiers": [
+                "left_command"
+              ]
+            },
+            {
+              "key_code": "vk_none",
+              "hold_down_milliseconds": 100
+            },
+            {
+              "shell_command": "pbpaste > ~/.clip5"
+            }
+          ]
+        },
+        {
+          "description": "5 = paste from clip5",
+          "type": "basic",
+          "from": {
+            "key_code": "5",
+            "modifiers": {
+              "mandatory": [
+                "right_command",
+                "right_control",
+                "right_shift",
+                "right_option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "shell_command": "cat ~/.clip5 | pbcopy"
+            },
+            {
+              "key_code": "vk_none",
+              "hold_down_milliseconds": 100
+            },
+            {
+              "key_code": "v",
+              "modifiers": [
+                "left_command"
+              ]
+            }
+          ]
+        },
+        {
+          "description": "command + 6 = copy to clip6",
+          "type": "basic",
+          "from": {
+            "key_code": "6",
+            "modifiers": {
+              "mandatory": [
+                "left_command",
+                "right_command",
+                "right_control",
+                "right_shift",
+                "right_option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "c",
+              "modifiers": [
+                "left_command"
+              ]
+            },
+            {
+              "key_code": "vk_none",
+              "hold_down_milliseconds": 100
+            },
+            {
+              "shell_command": "pbpaste > ~/.clip6"
+            }
+          ]
+        },
+        {
+          "description": "6 = paste from clip6",
+          "type": "basic",
+          "from": {
+            "key_code": "6",
+            "modifiers": {
+              "mandatory": [
+                "right_command",
+                "right_control",
+                "right_shift",
+                "right_option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "shell_command": "cat ~/.clip6 | pbcopy"
+            },
+            {
+              "key_code": "vk_none",
+              "hold_down_milliseconds": 100
+            },
+            {
+              "key_code": "v",
+              "modifiers": [
+                "left_command"
+              ]
             }
           ]
         }
@@ -1986,80 +2200,6 @@
               "modifiers": [
                 "left_shift",
                 "left_option"
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "description": "Keyboard tempfix",
-      "manipulators": [
-        {
-          "description": "o = p",
-          "type": "basic",
-          "from": {
-            "key_code": "o",
-            "modifiers": {
-              "mandatory": [
-                "right_command",
-                "right_control",
-                "right_shift",
-                "right_option"
-              ]
-            }
-          },
-          "to": [
-            {
-              "key_code": "p"
-            }
-          ]
-        },
-        {
-          "description": "shift + o = shift + p",
-          "type": "basic",
-          "from": {
-            "key_code": "o",
-            "modifiers": {
-              "mandatory": [
-                "left_shift",
-                "right_command",
-                "right_control",
-                "right_shift",
-                "right_option"
-              ]
-            }
-          },
-          "to": [
-            {
-              "key_code": "p",
-              "modifiers": [
-                "left_shift"
-              ]
-            }
-          ]
-        },
-        {
-          "description": "cmd + o = cmd p",
-          "type": "basic",
-          "from": {
-            "key_code": "o",
-            "modifiers": {
-              "mandatory": [
-                "left_command",
-                "right_command",
-                "right_control",
-                "right_shift",
-                "right_option"
-              ]
-            }
-          },
-          "to": [
-            {
-              "key_code": "p",
-              "modifiers": [
-                "left_command",
-                "left_shift"
               ]
             }
           ]
